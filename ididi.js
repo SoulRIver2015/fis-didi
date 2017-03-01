@@ -209,7 +209,13 @@ fis.config.merge({
 				// include: '/page/**',
 				optDeps: false
 			}
-		}
+		},
+		parser: {
+            "es6-babel": {
+                loose: [ "es6.modules" ], // 允许非function内部的代码写return;
+                blacklist: [ "useStrict" ] // 转换后不强制严格模式
+            }
+        },
 	},
 	server: server
 });
@@ -219,6 +225,8 @@ fis.config.set('modules.preprocessor.js', [preprocessor.JS]);
 fis.config.set('modules.preprocessor.html', [preprocessor.HTML]);
 
 
-
+// es6
+fis.config.set('project.fileType.text', 'es6');
+fis.config.set('modules.parser.js', 'es6-babel');
 
 
